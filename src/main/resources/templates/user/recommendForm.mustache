@@ -1,0 +1,400 @@
+{{> layout/header}}
+
+<!--17번 개인기업추천보기 화면-->
+<div class="d-flex mb-3">
+  <div class="col-2"></div>
+
+  <div class="class col-8 h-auto d-flex border border-info">
+    <div class="bg-info col-2">
+      <div class="m-2"></div>
+      <a href="updateForm" class="w-100 btn btn-info">마이 페이지</a>
+      <div class="m-2"></div>
+      <a href="resumeForm" class="w-100 btn btn-info">이력서 등록</a>
+      <div class="m-2"></div>
+      <a href="resumeManage" class="w-100 btn btn-info">이력서 관리</a>
+      <div class="m-2"></div>
+      <a href="applyList" class="w-100 btn btn-info">지원 내역</a>
+      <div class="m-2"></div>
+      <a href="bookmarkForm" class="w-100 btn btn-info">북마크</a>
+      <div class="m-2"></div>
+      <a href="recommendForm" class="w-100 btn btn-info">기업 추천</a>
+    </div>
+    <div class="col-9 ms-3">
+      <h1 class="text-center mt-2">기업추천</h1>
+
+      <form id="selectform" action="/user/recommendForm" method="GET">
+        <div class="d-flex justify-content-around">
+          <div class="w-50 m-1 me-2 mb-2 border border-info">
+            <h4 class="mt-2 text-center">기술별</h4>
+
+            <div class="form-check d-inline-block ms-3 me-2">
+              <label class="form-check-label">
+                <input
+                  class="skillFind form-check-input"
+                  type="checkbox"
+                  name="skillList"
+                  id="skillAll"
+                  value="all"
+                  onclick="skillCheck(this)"
+                />
+                모두</label
+              >
+            </div>
+
+            <hr class="m-1" />
+
+            <div class="d-flex flex-wrap">
+              {{#skillList}}
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="skillFind form-check-input"
+                    type="checkbox"
+                    id="{{ skillname }}"
+                    name="skillList"
+                    value="{{ skillname }}"
+                    onclick="skillAllCheckAndSelect()"
+                  />
+                  {{ skillname }}</label
+                >
+              </div>
+              {{/skillList}}
+            </div>
+          </div>
+
+          <div class="w-50 m-1 ms-2 mb-2 border border-info">
+            <h4 class="mt-2 text-center">직무별</h4>
+
+            <div class="form-check d-inline-block ms-3 me-2">
+              <label class="form-check-label">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="all2"
+                  name="position"
+                  value="all"
+                />
+                모두</label
+              >
+            </div>
+
+            <hr class="m-1" />
+
+            <div class="d-flex flex-wrap">
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="백엔드"
+                    name="position"
+                    value="백엔드"
+                  />
+                  백엔드</label
+                >
+              </div>
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="프론트엔드"
+                    name="position"
+                    value="프론트엔드"
+                  />
+                  프론트엔드</label
+                >
+              </div>
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="풀스택"
+                    name="position"
+                    value="풀스택"
+                  />
+                  풀스택</label
+                >
+              </div>
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="안드로이드"
+                    name="position"
+                    value="안드로이드"
+                  />
+                  안드로이드</label
+                >
+              </div>
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="IOS"
+                    name="position"
+                    value="IOS"
+                  />
+                  IOS</label
+                >
+              </div>
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="임베디드"
+                    name="position"
+                    value="임베디드"
+                  />
+                  임베디드</label
+                >
+              </div>
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="빅데이터"
+                    name="position"
+                    value="빅데이터"
+                  />
+                  빅데이터</label
+                >
+              </div>
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="서버"
+                    name="position"
+                    value="서버"
+                  />
+                  서버</label
+                >
+              </div>
+              <div class="form-check d-inline-block ms-3 me-2">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="머신러닝"
+                    name="position"
+                    value="머신러닝"
+                  />
+                  머신러닝</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="result" class="mb-12 d-flex flex-wrap"></div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="btn btn-success w-100" onclick="searchAll()">
+            검색하기
+          </div>
+          <div class="btn btn-success w-100" onclick="select()">셀렉하기</div>
+        </div>
+
+        {{#compList}}
+        <div class="d-flex border border-info m-3 p-2">
+          <div class="col-9">
+            <div class="m-auto">
+              <span class="badge bg-danger">{{ position }}</span>
+              {{#postingSkills}}
+              <span class="badge bg-secondary me-1">{{ skill.skillname }}</span>
+              <div>{{ posting.title }}</div>
+              {{/postingSkills}}
+            </div>
+          </div>
+          <div class="mt-3">
+            <a
+              href="/user/applyForm/{{ postingId }}"
+              class="mb-3 ms-2 btn btn-info"
+              >지원하기</a
+            >
+          </div>
+        </div>
+        {{/compList}}
+
+        <input type="hidden" value="{{ json }}" name="json" id="json" />
+        <input
+          type="hidden"
+          value="{{ position }}"
+          name="positionSet"
+          id="positionSet"
+        />
+      </form>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-2 col-md-1 col-sm-auto"></div>
+</div>
+
+<script>
+  function skillCheck(selectAll) {
+    let skillAll = document.querySelectorAll(".skillFind");
+    // let allCheck=document.querySelector("#all");
+
+    skillAll.forEach((element) => {
+      element.checked = selectAll.checked;
+    });
+    select();
+  }
+
+  function skillAllCheck() {
+    let allCheck = document.querySelector("#skillAll");
+    let skillAll = document.querySelectorAll(".skillFind");
+    let skillAllCheck = document.querySelectorAll(".skillFind:checked");
+
+    if (skillAll.length == skillAllCheck.length) {
+      allCheck.checked = true;
+    } else {
+      allCheck.checked = false;
+    }
+  }
+
+  function searchAll() {
+    if (document.querySelector("#skillAll").checked) {
+      let skillfind = document.querySelectorAll(".skillFind");
+      skillfind.forEach((element) => {
+        element.checked = false;
+      });
+    }
+    let submit = document.getElementById("selectform");
+    submit.submit();
+  }
+
+  function check() {
+    const json = JSON.parse(document.querySelector("#json").value);
+
+    let skillCheckBoxAll = document.getElementById("skillAll");
+
+    if (json[0] != skillCheckBoxAll.value) {
+      json.forEach((element) => {
+        document.getElementById(element).checked = true;
+      });
+      skillCheckBoxAll.checked = false;
+    } else {
+      skillCheckBoxAll.checked = true;
+      let skillFind2 = document.querySelectorAll(".skillFind");
+      skillFind2.forEach((element) => {
+        element.checked = true;
+      });
+    }
+  }
+  check();
+
+  const positionSet = document.querySelector("#positionSet").value;
+  if (positionSet == "all") {
+    document.getElementById("all2").checked = true;
+  } else {
+    document.getElementById(positionSet).checked = true;
+  }
+
+  // 배열을 foreach문을 돌려서 랜더링
+  function render(postingList) {
+    console.log("postingList", postingList);
+
+    // 기준이 되는 div를 실행할때 마다 초기화 해준다.
+    $("#result").html("");
+    postingList.forEach((posting) => {
+      console.log(posting);
+
+      // postingBox() << append할 html요소를 return하는 함수
+      $("#result").append(postingBox(posting));
+    });
+  }
+
+  // html요소 문자열을 만들기 위한 함수
+  function postingBox(posting) {
+    // posting 중간에 skill이라는 배열이 또 존재하기 때문에 한번 끊어준다.
+    let r = `
+      <div class="border border-info m-2 ps-2 pe-2 pt-1">
+        ${posting.position} <br/>
+        ${posting.title} <br/>
+        ${posting.desc} <br/>
+     `;
+
+    // skill 배열을 html요소 안에 담아 출력하기 위한 foreach문
+    posting.postingSkill.forEach((temp) => {
+      r += `${temp.skill.skillname} ,`;
+    });
+
+    // 마지막에 들어갈 div닫는요소
+    r += `</div>`;
+    console.log("r", r);
+    return r;
+  }
+
+  // 체크된 박스들을 스프링으로 전달해서 find후 조건에 맞는 posting 배열을 가지고 오기 위한 fetch함수
+  async function select() {
+    // post 요청을 보낼 body 데이터를 만들기 위한 DOM값을 담을 변수를 선언
+    let skillList = document.querySelectorAll(".skillFind:checked");
+    let position = document.querySelector(
+      'input[name="position"]:checked'
+    ).value;
+    // let skillListJson = await skillList.JSON();
+    let skillArray = Array.from(skillList);
+    console.log(skillArray);
+    console.log(position);
+
+    // 다중 체크박스의 스킬이름을 담기 위한 배열
+    let skillName = [];
+    for (var skill of skillList) {
+      console.log(skill.id);
+      skillName.push(skill.id);
+    }
+    console.log("skillName : " + skillName);
+
+    // fetch함수로 post요청을 할때 body데이터가 될 requestBody객체
+    let requestBody = {
+      skillName: skillName,
+      position: position,
+    };
+
+    // fetch 함수로 /api/user/recommend << 에 post 요청하고 응답받은 값을 response에 담는다.
+    let response = await fetch("/api/user/recommend", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    });
+
+    // 통신은 여기서 완료 완료됨
+    let result = await response.json();
+    console.log(result);
+
+    // 랜더할 함수만 따로 떼서 랜더함수에서 처리
+    // result << response라는 json을 자바스크립트 객체로 변환
+    // result.data << result안의 postingList라는 배열
+    render(result.data);
+  }
+
+  function skillAllCheckAndSelect() {
+    skillAllCheck();
+    select();
+  }
+
+  {
+    {
+      !function skillCheckAndSelect(select) {
+        skillCheck(select);
+        select();
+      };
+    }
+  }
+
+  const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+  radioButtons.forEach((radioButton) => {
+    radioButton.addEventListener("change", select);
+  });
+</script>
+{{> layout/footer}}
